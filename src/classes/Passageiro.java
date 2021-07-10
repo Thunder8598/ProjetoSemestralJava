@@ -28,7 +28,6 @@ public class Passageiro {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return "Nome: "+this.nome + "\n" + "CPF: "+this.cpf;
     }
 }

@@ -1,5 +1,7 @@
 package classes;
 
+import javax.swing.JOptionPane;
+
 public class Aviao extends Aeronave {
 
     public Passageiro[][] passageiros;
@@ -8,6 +10,16 @@ public class Aviao extends Aeronave {
         super(modeloAviao);
 
         this.passageiros = new Passageiro[totalFileiras][numeroAcentos];
+    }
+
+    public Aviao(String modeloAviao, String totalFileiras, String numeroAcentos) throws Exception {
+        super(modeloAviao);
+
+        try {
+            this.passageiros = new Passageiro[Integer.parseInt(totalFileiras)][Integer.parseInt(numeroAcentos)];
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, "Total de fileiras e número de acentos precisam ser números inteiros");
+        }
     }
 
     public boolean verificaLugarOcupado(int fileira, int acento) {
@@ -32,7 +44,6 @@ public class Aviao extends Aeronave {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return "Modelo: "+this.modelo;
+        return "Modelo: " + this.modelo;
     }
 }

@@ -36,8 +36,7 @@ public class App {
     public static void showParametrosSistema() {
 
         while (true) {
-            App.option = JOptionPane.showInputDialog(null,
-                    "Parametros do Sistema\n1-Cadastrar Aeronave\n2-Cadastrar Voo\n3-Voltar");
+            App.option = JOptionPane.showInputDialog(null, "Parametros do Sistema\n1-Cadastrar Aeronave\n2-Cadastrar Voo\n3-Voltar");
 
             switch (App.option) {
                 /*
@@ -46,8 +45,8 @@ public class App {
                 case "1":
                     try {
                         String modelo = JOptionPane.showInputDialog(null, "Insira o modelo do avião");
-                        int totalFileiras = Integer.parseInt(JOptionPane.showInputDialog(null, "O total de fileiras"));
-                        int totalAcentos = Integer.parseInt(JOptionPane.showInputDialog(null, "O total de acentos"));
+                        String totalFileiras = JOptionPane.showInputDialog(null, "O total de fileiras");
+                        String totalAcentos = JOptionPane.showInputDialog(null, "O total de acentos");
 
                         App.avioes.add(new Aviao(modelo, totalFileiras, totalAcentos));
                     } catch (Exception error) {
