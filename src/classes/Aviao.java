@@ -24,8 +24,42 @@ public class Aviao extends Aeronave {
 
     public boolean verificaLugarOcupado(int fileira, int acento) {
         if (this.passageiros[fileira][acento] == null)
-            return true;
-        return false;
+            return false;
+        return true;
+    }
+
+    public String mostraLugaresVazios() {
+
+        String lista = "";
+
+        for (int fileira = 0; fileira < this.passageiros.length; fileira++) {
+
+            lista += "Fileira " + (fileira + 1) + "\n\n";
+
+            for (int acento = 0; acento < this.passageiros[fileira].length; acento++) {
+                if (!this.verificaLugarOcupado(fileira, acento))
+                    lista += "Acento " + (acento + 1) + "\n";
+            }
+        }
+
+        return lista;
+    }
+
+    public String mostraLugaresOcupados() {
+
+        String lista = "";
+
+        for (int fileira = 0; fileira < this.passageiros.length; fileira++) {
+
+            lista += "Fileira " + (fileira + 1) + "\n\n";
+
+            for (int acento = 0; acento < this.passageiros[fileira].length; acento++) {
+                if (this.verificaLugarOcupado(fileira, acento))
+                    lista += "Acento " + (acento + 1) + "\n";
+            }
+        }
+
+        return lista;
     }
 
     /*
@@ -42,8 +76,22 @@ public class Aviao extends Aeronave {
         return passageiros[fileira][acento];
     }
 
+    public int getNumeroLugaresVazios() {
+
+        int lugaresVazios = 0;
+
+        for (int fileira = 0; fileira < this.passageiros.length; fileira++) {
+            for (int acento = 0; acento < this.passageiros[fileira].length; acento++)
+                if (!this.verificaLugarOcupado(fileira, acento))
+                    lugaresVazios++;
+        }
+
+        return lugaresVazios;
+    }
+
     @Override
     public String toString() {
-        return "Modelo: " + this.modelo;
+        return "[Modelo: " + this.modelo + " - Fileiras: " + this.passageiros.length + " - Acento por fileiras: "
+                + this.passageiros[0].length + "]";
     }
 }

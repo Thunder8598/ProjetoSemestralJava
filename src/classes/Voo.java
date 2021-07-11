@@ -31,4 +31,9 @@ public class Voo {
     public int getNumeroVoo() {
         return numeroVoo;
     }
+
+    @Override
+    public String toString() {
+        return "[ Número do Vôo: "+this.numeroVoo + " - Data e hora: " + this.data + " " + this.hora + "\n" + this.aviao+"]";
+    }
 }
