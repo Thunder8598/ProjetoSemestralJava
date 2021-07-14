@@ -69,6 +69,14 @@ public class Aviao extends Aeronave {
         this.passageiros[fileira][acento] = passageiro;
     }
 
+    public void setPassageiro(String fileira, String acento, Passageiro passageiro) throws Exception {
+        try {
+            this.passageiros[Integer.parseInt(fileira)][Integer.parseInt(acento)] = passageiro;
+        } catch (Exception e) {
+            throw new Exception("A fileira e o número do acento precisam ser números inteiros");
+        }
+    }
+
     /*
      * Getters
      */

@@ -6,9 +6,9 @@ public class Passageiro {
 
     public Passageiro(String nome, String cpf) throws Exception {
 
-        if (nome.trim().length() == 0)
+        if (nome == null || nome.trim().length() == 0)
             throw new Exception("Nome não informado");
-        else if (cpf.trim().length() == 0)
+        else if (cpf == null || cpf.trim().length() == 0)
             throw new Exception("CPF não informado");
 
         this.nome = nome;
@@ -28,6 +28,6 @@ public class Passageiro {
 
     @Override
     public String toString() {
-        return "Nome: "+this.nome + "\n" + "CPF: "+this.cpf;
+        return "Nome: " + this.nome + "\n" + "CPF: " + this.cpf;
     }
 }
