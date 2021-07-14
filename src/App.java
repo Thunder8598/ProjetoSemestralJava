@@ -22,6 +22,9 @@ public class App {
             App.option = JOptionPane.showInputDialog(null,
                     "Menu Principal\n1-Parâmetros do sistema\n2-Reservas de Passagens\n3-Sair");
 
+            if (App.option == null)
+                break;
+
             switch (App.option) {
                 case "1":
                     App.showParametrosSistema();
@@ -41,6 +44,9 @@ public class App {
             App.option = JOptionPane.showInputDialog(null,
                     "Parametros do Sistema\n1-Cadastrar Aeronave\n2-Cadastrar Voo\n3-Voltar");
 
+            if (App.option == null)
+                break;
+
             switch (App.option) {
                 /*
                  * Cadastro do avião
@@ -51,7 +57,10 @@ public class App {
                         String totalFileiras = JOptionPane.showInputDialog(null, "O total de fileiras");
                         String totalAcentos = JOptionPane.showInputDialog(null, "O total de acentos");
 
-                        App.avioes.add(new Aviao(modelo, totalFileiras, totalAcentos));
+                        Aviao aviao = new Aviao(modelo, totalFileiras, totalAcentos);
+
+                        if (aviao.passageiros != null)
+                            App.avioes.add(aviao);
                     } catch (Exception error) {
                         JOptionPane.showMessageDialog(null, error.getMessage(), "Ops", 1);
                     }
@@ -97,6 +106,9 @@ public class App {
 
             App.option = JOptionPane.showInputDialog(null,
                     "Reserva de passagens\n1-Fazer reserva\n2-Consultar lugares vazios\n3-Consultar reservas realizadas\n4-Voltar");
+
+            if (App.option == null)
+                break;
 
             switch (App.option) {
                 case "1":

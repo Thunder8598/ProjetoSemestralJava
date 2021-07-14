@@ -7,19 +7,19 @@ public class Aeronave {
         this.setModelo(modelo);
     }
 
-    /* 
-        Setters
-    */
+    /*
+     * Setters
+     */
     public void setModelo(String modelo) throws Exception {
-        if (modelo.trim().length() == 0)
+        if (modelo == null || modelo.trim().length() == 0)
             throw new Exception("Modelo não informado");
-            
+
         this.modelo = modelo;
     }
-    
+
     /*
-        Getters
-    */
+     * Getters
+     */
     public String getModelo() {
         return modelo;
     }
