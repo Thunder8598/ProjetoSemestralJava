@@ -81,6 +81,12 @@ public class App {
                     try {
                         int numeroLista = Integer
                                 .parseInt(JOptionPane.showInputDialog(null, lista + "\nSelecione o número do avião"));
+
+                        if (numeroLista > App.avioes.size()) {
+                            JOptionPane.showMessageDialog(null, "O avião seleciondo não existe");
+                            break;
+                        }
+
                         String dataVoo = JOptionPane.showInputDialog(null, "Insira a data do Vôo");
                         String horaVoo = JOptionPane.showInputDialog(null, "Insira a hora do Vôo");
 
