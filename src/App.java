@@ -18,6 +18,8 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
+        App.gerarCadastroAutomatico();
+
         while (true) {
             App.option = JOptionPane.showInputDialog(null,
                     "Menu Principal\n1-Parâmetros do sistema\n2-Reservas de Passagens\n3-Sair");
@@ -93,8 +95,7 @@ public class App {
                         App.voos.add(new Voo(App.avioes.get(numeroLista - 1), App.voos.size() + 1, dataVoo, horaVoo));
 
                     } catch (NumberFormatException error) {
-                        JOptionPane.showMessageDialog(null, "O número do avião só pode conter valores númericos", "Ops",
-                                1);
+                        JOptionPane.showMessageDialog(null, "O número do avião só pode conter valores númericos");
                     } catch (Exception error) {
                         JOptionPane.showMessageDialog(null, error.getMessage(), "Ops", 1);
                     }
@@ -129,7 +130,7 @@ public class App {
                     try {
                         Passageiro passageiro = new Passageiro(
                                 JOptionPane.showInputDialog(null, "Insira o nome do passageiro"),
-                                JOptionPane.showInputDialog(null, "Insira o nome do passageiro"));
+                                JOptionPane.showInputDialog(null, "Insira o CPF do passageiro"));
 
                         int numeroVoo = Integer
                                 .parseInt(JOptionPane.showInputDialog(null, App.lista + "Insira o número do vôo")) - 1;
@@ -204,6 +205,17 @@ public class App {
 
                 default:
                     return;
+            }
+        }
+    }
+
+    public static void gerarCadastroAutomatico() {
+        for (int i = 0; i < 10; i++) {
+            try {
+                App.avioes.add(new Aviao("Teste " + i, (i % 2 == 0 ? 2 : 1), 100));
+                App.voos.add(new Voo(App.avioes.get(i), i, "25/08/2021", "20:00"));
+            } catch (Exception error) {
+                System.out.println(error.getMessage());
             }
         }
     }
