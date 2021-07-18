@@ -22,13 +22,18 @@ public class Aviao extends Aeronave {
         }
     }
 
-    public boolean verificaLugarOcupado(int fileira, int acento) {
-        if (this.passageiros[fileira][acento] == null)
-            return false;
-        return true;
+    public boolean verificaLugarOcupado(int fileira, int acento) throws Exception {
+        try {
+            if (this.passageiros[fileira][acento] == null)
+                return false;
+            return true;
+
+        } catch (Exception error) {
+            throw new Exception("Número da fileira ou acento invalido");
+        }
     }
 
-    public String mostraLugaresVazios() {
+    public String mostraLugaresVazios() throws Exception {
 
         String lista = "";
 
@@ -45,7 +50,7 @@ public class Aviao extends Aeronave {
         return lista;
     }
 
-    public String mostraLugaresOcupados() {
+    public String mostraLugaresOcupados() throws Exception {
 
         String lista = "";
 
@@ -65,8 +70,12 @@ public class Aviao extends Aeronave {
     /*
      * Setters
      */
-    public void setPassageiro(int fileira, int acento, Passageiro passageiro) {
-        this.passageiros[fileira][acento] = passageiro;
+    public void setPassageiro(int fileira, int acento, Passageiro passageiro) throws Exception {
+        try {
+            this.passageiros[fileira][acento] = passageiro;
+        } catch (Exception error) {
+            throw new Exception("Número da fileira ou acento invalido");
+        }
     }
 
     public void setPassageiro(String fileira, String acento, Passageiro passageiro) throws Exception {
@@ -84,7 +93,7 @@ public class Aviao extends Aeronave {
         return passageiros[fileira][acento];
     }
 
-    public int getNumeroLugaresVazios() {
+    public int getNumeroLugaresVazios() throws Exception {
 
         int lugaresVazios = 0;
 

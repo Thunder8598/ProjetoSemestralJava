@@ -64,7 +64,7 @@ public class App {
                         if (aviao.passageiros != null)
                             App.avioes.add(aviao);
                     } catch (Exception error) {
-                        JOptionPane.showMessageDialog(null, error.getMessage(), "Ops", 1);
+                        JOptionPane.showMessageDialog(null, error.getMessage());
                     }
                     break;
 
@@ -118,6 +118,9 @@ public class App {
                 break;
 
             switch (App.option) {
+                /*
+                 * Reserva passagem
+                 */
                 case "1":
 
                     App.geraListaVoos();
@@ -134,9 +137,11 @@ public class App {
 
                         int numeroVoo = Integer
                                 .parseInt(JOptionPane.showInputDialog(null, App.lista + "Insira o número do vôo")) - 1;
-                        int fileira = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a fileira")) - 1;
-                        int acento = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira o lugar da fileira"))
-                                - 1;
+
+                        if (App.voos.size() < numeroVoo + 1) {
+                            JOptionPane.showMessageDialog(null, "Esse avião não existe");
+                            break;
+                        }
 
                         Aviao aviao = App.voos.get(numeroVoo).getAviao();
 
@@ -144,6 +149,10 @@ public class App {
                             JOptionPane.showMessageDialog(null, "Nenhum acento disponível");
                             break;
                         }
+
+                        int fileira = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a fileira")) - 1;
+                        int acento = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira o lugar da fileira"))
+                                - 1;
 
                         if (aviao.verificaLugarOcupado(fileira, acento)) {
                             JOptionPane.showMessageDialog(null, "Esse lugar não está vago");
@@ -154,8 +163,8 @@ public class App {
 
                     }
 
-                    catch (NullPointerException error) {
-                        JOptionPane.showMessageDialog(null, "Número da fileira ou acento invalido");
+                    catch (NumberFormatException error) {
+                        JOptionPane.showMessageDialog(null, "Insira somente valores númericos");
                     }
 
                     catch (Exception error) {
@@ -164,6 +173,9 @@ public class App {
 
                     break;
 
+                /*
+                 * Consultar lugares vazios
+                 */
                 case "2":
 
                     App.geraListaVoos();
@@ -177,13 +189,23 @@ public class App {
                         int numeroVoo = Integer.parseInt(
                                 JOptionPane.showInputDialog(null, App.lista + "\nInsira a numero do vôo")) - 1;
 
+                        if (App.voos.size() < numeroVoo + 1) {
+                            JOptionPane.showMessageDialog(null, "Esse voo não está disponível");
+                            break;
+                        }
+
                         JOptionPane.showMessageDialog(null, App.voos.get(numeroVoo).getAviao().mostraLugaresVazios());
 
                     } catch (NumberFormatException error) {
                         JOptionPane.showMessageDialog(null, "Número do Vôo inválido");
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage());
                     }
                     break;
 
+                /*
+                 * Consultar reservas realizadas
+                 */
                 case "3":
                     App.geraListaVoos();
 
@@ -196,8 +218,17 @@ public class App {
                         int numeroVoo = Integer.parseInt(
                                 JOptionPane.showInputDialog(null, App.lista + "\nInsira a numero do vôo")) - 1;
 
-                        JOptionPane.showMessageDialog(null, App.voos.get(numeroVoo).getAviao().mostraLugaresOcupados());
+                        if (App.voos.size() < numeroVoo + 1) {
+                            JOptionPane.showMessageDialog(null, "Esse voo não está disponível");
+                            break;
+                        }
 
+                        try {
+                            JOptionPane.showMessageDialog(null,
+                                    App.voos.get(numeroVoo).getAviao().mostraLugaresOcupados());
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, e.getMessage());
+                        }
                     } catch (NumberFormatException error) {
                         JOptionPane.showMessageDialog(null, "Número do Vôo inválido");
                     }
