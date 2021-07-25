@@ -39,12 +39,14 @@ public class Aviao extends Aeronave {
 
         for (int fileira = 0; fileira < this.passageiros.length; fileira++) {
 
-            lista += "Fileira " + (fileira + 1) + "\n\n";
+            lista += "Fileira " + (fileira + 1) + " [";
 
             for (int acento = 0; acento < this.passageiros[fileira].length; acento++) {
                 if (!this.verificaLugarOcupado(fileira, acento))
-                    lista += "Acento " + (acento + 1) + "\n";
+                    lista += "" + (acento + 1) + ", ";
             }
+
+            lista+="]\n";
         }
 
         return lista;
@@ -56,12 +58,14 @@ public class Aviao extends Aeronave {
 
         for (int fileira = 0; fileira < this.passageiros.length; fileira++) {
 
-            lista += "Fileira " + (fileira + 1) + "\n\n";
+            lista += "Fileira " + (fileira + 1) + " [";
 
             for (int acento = 0; acento < this.passageiros[fileira].length; acento++) {
                 if (this.verificaLugarOcupado(fileira, acento))
-                    lista += "Acento " + (acento + 1) + "\n";
+                    lista += "" + (acento + 1) + ", ";
             }
+            
+            lista+="]\n";
         }
 
         return lista;

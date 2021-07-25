@@ -237,7 +237,7 @@ public class App {
     public static void gerarCadastroAutomatico() {
         for (int i = 0; i < 10; i++) {
             try {
-                App.avioes.add(new Aviao("Teste " + i, (i % 2 == 0 ? 2 : 1), 100));
+                App.avioes.add(new Aviao("Teste " + i, (i % 2 == 0 ? 2 : 1), 10));
                 App.voos.add(new Voo(App.avioes.get(i), i, "25/08/2021", "20:00"));
             } catch (Exception error) {
                 System.out.println(error.getMessage());
